@@ -13,14 +13,29 @@ while (true)
     Console.Clear();
 
     var choice = AnsiConsole.Prompt(
-        new SelectionPrompt<string>()
+        new SelectionPrompt<MenuOption>()
         .Title("What do you want to do next?")
-        .AddChoices(menuChoices));
+        .AddChoices(Enum.GetValues<MenuOption>()));
 
     switch (choice)
     {
-        case "View Books":
-            AnsiConsole.MarkupLine("[yellow]List of books:[/]");
+        case MenuOption.ViewBooks:
+            ViewBooks();
+            break;
+        case MenuOption.AddBook:
+            AddBook();
+            break;
+        case MenuOption.DeleteBook:
+            DeleteBook();
+            break;
+    }
+    Console.ReadLine();
+    
+}
+
+void ViewBooks()
+{
+    AnsiConsole.MarkupLine("[yellow]List of books:[/]");
 
             foreach(var book in books)
             {
@@ -28,10 +43,11 @@ while (true)
             }
 
             AnsiConsole.MarkupLine("Press any key to continue...");
+}
 
-            break;
-        case "Add Book":
-            var title = AnsiConsole.Ask<string>("Enter the [green]title[/] of a book to add:");
+void AddBook()
+{
+    var title = AnsiConsole.Ask<string>("Enter the [green]title[/] of a book to add:");
 
             if (books.Contains(title))
             {
@@ -43,9 +59,11 @@ while (true)
             }
 
             AnsiConsole.MarkupLine("Press Any Key to Continue.");
-            break;
-        case "Delete Book":
-            if (books.Count == 0)
+}
+
+void DeleteBook()
+{
+    if (books.Count == 0)
             {
                 AnsiConsole.MarkupLine("[red]No books available to delete.[/]");
                 Console.ReadKey();
@@ -68,9 +86,11 @@ while (true)
             }
 
             AnsiConsole.MarkupLine("Press Any Key to Continue.");
-            break;
-    }
-    Console.ReadLine();
-    
 }
 
+enum MenuOption
+{
+    ViewBooks,
+    AddBook,
+    DeleteBook
+}
