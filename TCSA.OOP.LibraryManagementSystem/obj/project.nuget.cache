@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "r1Bfe1fLQTA=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\samrm\\Documents\\GitRepos\\LibraryManagementSystem\\TCSA.OOP.LibraryManagementSystem\\TCSA.OOP.LibraryManagementSystem.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\samrm\\.nuget\\packages\\spectre.console\\0.54.0\\spectre.console.0.54.0.nupkg.sha512"
+  ],
+  "logs": []
+}
