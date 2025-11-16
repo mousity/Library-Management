@@ -1,4 +1,5 @@
 ﻿
+using System.Diagnostics;
 using Spectre.Console;
 
 var menuChoices = new string[3] { "View Books", "Add Book", "Delete Book" };
@@ -19,12 +20,23 @@ while (true)
     switch (choice)
     {
         case "View Books":
+            AnsiConsole.MarkupLine("[yellow]List of books:[/]");
+
+            foreach(var book in books)
+            {
+                AnsiConsole.MarkupLine($"[cyan]{book}[/]");
+            }
+
+            AnsiConsole.MarkupLine("Press any key to continue...");
+            Console.ReadKey();
+
             break;
         case "Add Book":
             break;
         case "Delete Book":
             break;
     }
-
+    Console.ReadLine();
+    
 }
 

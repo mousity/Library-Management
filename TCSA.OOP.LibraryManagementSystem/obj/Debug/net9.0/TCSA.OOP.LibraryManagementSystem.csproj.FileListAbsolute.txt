@@ -15,3 +15,4 @@ C:\Users\samrm\Documents\GitRepos\LibraryManagementSystem\TCSA.OOP.LibraryManage
 C:\Users\samrm\Documents\GitRepos\LibraryManagementSystem\TCSA.OOP.LibraryManagementSystem\obj\Debug\net9.0\TCSA.OOP.LibraryManagementSystem.pdb
 C:\Users\samrm\Documents\GitRepos\LibraryManagementSystem\TCSA.OOP.LibraryManagementSystem\obj\Debug\net9.0\TCSA.OOP.LibraryManagementSystem.genruntimeconfig.cache
 C:\Users\samrm\Documents\GitRepos\LibraryManagementSystem\TCSA.OOP.LibraryManagementSystem\obj\Debug\net9.0\ref\TCSA.OOP.LibraryManagementSystem.dll
+C:\Users\samrm\Documents\GitRepos\LibraryManagementSystem\TCSA.OOP.LibraryManagementSystem\obj\Debug\net9.0\TCSA.OOP.LibraryManagementSystem.sourcelink.json
