@@ -28,12 +28,46 @@ while (true)
             }
 
             AnsiConsole.MarkupLine("Press any key to continue...");
-            Console.ReadKey();
 
             break;
         case "Add Book":
+            var title = AnsiConsole.Ask<string>("Enter the [green]title[/] of a book to add:");
+
+            if (books.Contains(title))
+            {
+                AnsiConsole.MarkupLine("[red]This book is already on your list![/]");
+            } else
+            {
+                books.Add(title);
+                AnsiConsole.MarkupLine("[green]Your book has been added successfully![/]");
+            }
+
+            AnsiConsole.MarkupLine("Press Any Key to Continue.");
             break;
         case "Delete Book":
+            if (books.Count == 0)
+            {
+                AnsiConsole.MarkupLine("[red]No books available to delete.[/]");
+                Console.ReadKey();
+                return;
+            }
+
+            var bookToDelete = AnsiConsole.Prompt(
+                                new SelectionPrompt<string>()
+                                .Title("Select a [red]book[/] to delete:")
+                                .AddChoices(books)
+                                );
+
+            if (books.Remove(bookToDelete))
+            {
+                AnsiConsole.MarkupLine("[red]Book deleted successfully![/]");
+            }
+            else
+            {
+                AnsiConsole.MarkupLine("[red]Book not found.[/]");
+            }
+
+            AnsiConsole.MarkupLine("Press Any Key to Continue.");
             break;
     }
     Console.ReadLine();
