@@ -25,14 +25,16 @@ internal class BooksController
     internal void AddBook()
     {
         var title = AnsiConsole.Ask<string>("Enter the [green]title[/] of a book to add:");
+		var pages = AnsiConsole.Ask<int>("Enter the [green]number of pages[/] in the book:");
 
-        if (MockDatabase.Books.Contains(title))
+		if (MockDatabase.Books.Exists(b => b.Name.Equals(title, StringComparison.OrdinalIgnoreCase)))
         {
             AnsiConsole.MarkupLine("[red]This book is already on your list![/]");
         }
         else
         {
-			MockDatabase.Books.Add(title);
+			var newBook = new Book(title, pages);
+			MockDatabase.Books.Add(newBook);
             AnsiConsole.MarkupLine("[green]Your book has been added successfully![/]");
         }
 
@@ -49,10 +51,12 @@ internal class BooksController
         }
 
         var bookToDelete = AnsiConsole.Prompt(
-                            new SelectionPrompt<string>()
+                            new SelectionPrompt<Book>()
                             .Title("Select a [red]book[/] to delete:")
+                            .UseConverter(b => $"{b.Name}")
                             .AddChoices(MockDatabase.Books)
                             );
+                            
 
         if (MockDatabase.Books.Remove(bookToDelete))
         {
