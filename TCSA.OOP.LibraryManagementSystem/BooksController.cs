@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TCSA.OOP.LibraryManagementSystem.Controllers;
 
 namespace TCSA.OOP.LibraryManagementSystem;
 
-internal class BooksController
+internal class BooksController : IBaseController
 {
 
-	internal void ViewBooks()
+	public void ViewItems()
 	{
 		var table = new Table();
 		table.Border(TableBorder.Rounded);
@@ -42,7 +43,7 @@ internal class BooksController
 		Console.ReadKey();
 	}
 
-	public void AddBook()
+	public void AddItem()
 	{
 		var title = AnsiConsole.Ask<string>("Enter the [green]title[/] of the book to add:");
 		var author = AnsiConsole.Ask<string>("Enter the [green]author[/] of the book:");
@@ -65,7 +66,7 @@ internal class BooksController
 		Console.ReadKey();
 	}
 
-	internal void DeleteBook()
+	public void DeleteItem()
     {
         if (MockDatabase.LibraryItems.OfType<Book>().Count() == 0)
         {
@@ -93,4 +94,5 @@ internal class BooksController
 
         AnsiConsole.MarkupLine("Press Any Key to Continue.");
     }
+
 }
